@@ -1,9 +1,11 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Resources\GalleryCollection;
 
 class GalleryController extends Controller
 {
@@ -14,7 +16,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return new GalleryCollection(Gallery::all());
     }
 
     /**
