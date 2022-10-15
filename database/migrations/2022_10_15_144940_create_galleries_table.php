@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('artist');
+            $table->text('description');
+            $table->integer('likes');
             $table->timestamps();
         });
     }
