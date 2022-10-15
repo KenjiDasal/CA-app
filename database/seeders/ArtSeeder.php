@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Gallery;
+use App\Models\Art;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class GallerySeeder extends Seeder
+class ArtSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,7 @@ class GallerySeeder extends Seeder
      */
     public function run()
     {
-        Gallery::factory()->times(50)->create();
+    Art::factory()->count(10)->create();
+
     }
 }

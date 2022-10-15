@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class GalleryCollection extends ResourceCollection
+class ArtCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,10 +14,11 @@ class GalleryCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return[
-            `data` => $this -> collection,
-            `version` => '1.0.0',
-            `artist` => 'Kenji Dasal',
+        return [
+
+            'data' => $this -> collection,
+            'version' => '1.0.0',
+            'author' => 'Kenji Dasal'
 
         ];
     }

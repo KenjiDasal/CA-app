@@ -1,13 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Gallery;
+use App\Http\Resources\ArtCollection;
+use App\Models\Art;
 use Illuminate\Http\Request;
-use App\Http\Resources\GalleryCollection;
 
-class GalleryController extends Controller
+class ArtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return new GalleryCollection(Gallery::all());
+
+        return new ArtCollection(Art::all());
+
     }
 
     /**
@@ -27,16 +28,22 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $art = Art::create($request->only([
+
+            'title', 'author', 'category', 'author', 'likes'
+
+        ]));
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Gallery  $gallery
+     * @param  \App\Models\Art  $art
      * @return \Illuminate\Http\Response
      */
-    public function show(Gallery $gallery)
+    public function show(Art $art)
     {
         //
     }
@@ -45,10 +52,10 @@ class GalleryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Gallery  $gallery
+     * @param  \App\Models\Art  $art
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request, Art $art)
     {
         //
     }
@@ -56,10 +63,10 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Gallery  $gallery
+     * @param  \App\Models\Art  $art
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(Art $art)
     {
         //
     }
