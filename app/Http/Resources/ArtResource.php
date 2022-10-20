@@ -16,7 +16,7 @@ class ArtResource extends JsonResource
     {
         return [
 
-            'id' => $this->intdiv,
+            'id' => $this -> id,
             'title' => $this->title,
             'artist' => $this->artist,
             'category' => $this->category,

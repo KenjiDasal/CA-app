@@ -8,5 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Art extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'artist', 'category', 'description', 'likes'];
+    protected $fillable = [
+
+        'title',
+        'artist',
+        'category',
+        'description',
+        'likes'
+
+    ];
+
+    protected $guarded = [];
 }

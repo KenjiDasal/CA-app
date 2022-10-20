@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/art', ArtController::class);
+
+// Route::apiResource('/art', ArtController::class);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ArtCollection;
 use App\Models\Art;
+use App\Http\Resources\ArtResource;
 use Illuminate\Http\Request;
+
 
 class ArtController extends Controller
 {
@@ -31,9 +33,15 @@ class ArtController extends Controller
 
         $art = Art::create($request->only([
 
-            'title', 'author', 'category', 'author', 'likes'
+            'title',
+            'artist',
+            'category',
+            'description',
+            'likes'
 
         ]));
+
+        return new ArtResource($art);
 
     }
 
@@ -45,7 +53,7 @@ class ArtController extends Controller
      */
     public function show(Art $art)
     {
-        //
+        return new ArtResource($art);
     }
 
     /**
@@ -57,7 +65,17 @@ class ArtController extends Controller
      */
     public function update(Request $request, Art $art)
     {
-        //
+        $art -> update($request->only([
+
+            'title',
+            'artist',
+            'category',
+            'description',
+            'likes'
+
+        ]));
+
+        return new ArtResource($art);
     }
 
     /**
@@ -68,6 +86,7 @@ class ArtController extends Controller
      */
     public function destroy(Art $art)
     {
-        //
+        $art -> delete();
+        // return response() -> json(null, Response::HTTP_NOT_CONTENT);
     }
 }
