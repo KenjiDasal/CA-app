@@ -1,0 +1,133 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Gallery API",
+        "description": "Kenji's Gallery API",
+        "contact": {
+            "email": "N00202534@iadt.ie"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "2.0.0"
+    },
+    "paths": {
+        "/api/Art": {
+            "get": {
+                "tags": [
+                    "Art"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Displays all the Art pieces",
+                "operationId": "5e9ddba1c63f36a14afd03c3a35696a3",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation, Returns a list of Art pieces in JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/art": {
+            "post": {
+                "tags": [
+                    "Art"
+                ],
+                "summary": "Create a new art piece",
+                "description": "Stores the Art in the DB",
+                "operationId": "store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "artist",
+                                    "category",
+                                    "description",
+                                    "likes"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Sample Title"
+                                    },
+                                    "artist": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Me"
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Autobiography"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "A long description about this great A"
+                                    },
+                                    "likes": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/artists": {
+            "get": {
+                "tags": [
+                    "Artists"
+                ],
+                "description": "Displays all the artist",
+                "operationId": "2c8aed1387cca1c65d98da7ee11ac926",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation, Returns a list of Galleries in JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    }
+}

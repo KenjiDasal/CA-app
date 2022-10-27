@@ -8,7 +8,25 @@ use Illuminate\Http\Request;
 class ArtistController extends Controller
 {
     /**
+    * @OA\Get(
+        *     path="/api/artists",
+        *     description="Displays all the artist",
+        *     tags={"Artists"},
+    *      @OA\Response(
+        *          response=200,
+        *          description="Successful operation, Returns a list of Galleries in JSON format"
+        *       ),
+    *      @OA\Response(
+        *          response=401,
+        *          description="Unauthenticated",
+        *      ),
+    *      @OA\Response(
+        *          response=403,
+        *          description="Forbidden"
+        *      )
+    * )
      * Display a listing of the resource.
+     *
      *
      * @return \Illuminate\Http\Response
      */
