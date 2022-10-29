@@ -6,6 +6,7 @@ use App\Http\Resources\ArtCollection;
 use App\Models\Art;
 use App\Http\Resources\ArtResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 
 class ArtController extends Controller
@@ -16,9 +17,9 @@ class ArtController extends Controller
      * @return \Illuminate\Http\Response
      *
      *  @OA\Get(
-        *     path="/api/Gallery",
+        *     path="/api/art",
         *     description="Displays all the Art pieces",
-        *     tags={"Gallery"},
+        *     tags={"Art"},
         *      @OA\Response(
         *          response=200,
         *          description="Successful operation, Returns a list of Gallery in JSON format"
@@ -44,9 +45,9 @@ class ArtController extends Controller
      * Store a newly created resource in storage.
      *
      *  @OA\Post(
-     *      path="/api/gallery",
+     *      path="/api/art",
      *      operationId="store",
-     *      tags={"Gallery"},
+     *      tags={"Art"},
      *      summary="Create a new art piece",
      *      description="Stores the Art in the DB",
      *      @OA\RequestBody(
@@ -92,6 +93,32 @@ class ArtController extends Controller
     /**
      * Display the specified resource.
      *
+     *  @OA\Get(
+    *     path="/api/art/{id}",
+    *     description="Gets an Art Piece by ID",
+    *     tags={"Art"},
+    *          @OA\Parameter(
+        *          name="id",
+        *          description="Art id",
+        *          required=true,
+        *          in="path",
+        *          @OA\Schema(
+        *              type="integer")
+     *          ),
+        *      @OA\Response(
+        *          response=200,
+        *          description="Successful operation"
+        *       ),
+        *      @OA\Response(
+        *          response=401,
+        *          description="Unauthenticated",
+        *      ),
+        *      @OA\Response(
+        *          response=403,
+        *          description="Forbidden"
+        *      )
+ * )
+     *
      * @param  \App\Models\Art  $art
      * @return \Illuminate\Http\Response
      */
@@ -123,7 +150,30 @@ class ArtController extends Controller
     }
 
     /**
+     *
+     *
+
      * Remove the specified resource from storage.
+     *
+     * @OA\Delete(
+     *    path="/api/art/{id}",
+     *    operationId="destroy",
+     *    tags={"Art"},
+     *    summary="Delete an Art Piece",
+     *    description="Delete Art",
+     *    @OA\Parameter(name="id", in="path", description="Id of a Art piece", required=true,
+     *        @OA\Schema(type="integer")
+     *    ),
+     *    @OA\Response(
+     *         response=Response::HTTP_NO_CONTENT,
+     *         description="Success",
+     *         @OA\JsonContent(
+     *         @OA\Property(property="status_code", type="integer", example="204"),
+     *         @OA\Property(property="data",type="object")
+     *          ),
+     *       )
+     *      )
+     *  )
      *
      * @param  \App\Models\Art  $art
      * @return \Illuminate\Http\Response
@@ -131,6 +181,6 @@ class ArtController extends Controller
     public function destroy(Art $art)
     {
         $art -> delete();
-        // return response() -> json(null, Response::HTTP_NOT_CONTENT);
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

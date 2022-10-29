@@ -13,17 +13,17 @@
         "version": "2.0.0"
     },
     "paths": {
-        "/api/Art": {
+        "/api/art": {
             "get": {
                 "tags": [
                     "Art"
                 ],
                 "summary": "Display a listing of the resource.",
                 "description": "Displays all the Art pieces",
-                "operationId": "5e9ddba1c63f36a14afd03c3a35696a3",
+                "operationId": "02497dfe4b84b4200a4856599cd76bff",
                 "responses": {
                     "200": {
-                        "description": "Successful operation, Returns a list of Art pieces in JSON format"
+                        "description": "Successful operation, Returns a list of Gallery in JSON format"
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -32,9 +32,7 @@
                         "description": "Forbidden"
                     }
                 }
-            }
-        },
-        "/api/art": {
+            },
             "post": {
                 "tags": [
                     "Art"
@@ -49,9 +47,9 @@
                             "schema": {
                                 "required": [
                                     "title",
-                                    "artist",
                                     "category",
                                     "description",
+                                    "artists",
                                     "likes"
                                 ],
                                 "properties": {
@@ -59,11 +57,6 @@
                                         "type": "string",
                                         "format": "string",
                                         "example": "Sample Title"
-                                    },
-                                    "artist": {
-                                        "type": "string",
-                                        "format": "string",
-                                        "example": "Me"
                                     },
                                     "category": {
                                         "type": "string",
@@ -74,6 +67,11 @@
                                         "type": "string",
                                         "format": "string",
                                         "example": "A long description about this great A"
+                                    },
+                                    "artist": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Me"
                                     },
                                     "likes": {
                                         "type": "integer",
@@ -109,6 +107,78 @@
                 }
             }
         },
+        "/api/art/{id}": {
+            "get": {
+                "tags": [
+                    "Art"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "Gets an Art Piece by ID",
+                "operationId": "71b281c56d64848b7511ffe1deae02bf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Art id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Art"
+                ],
+                "summary": "Delete an Art Piece",
+                "description": "Delete Art",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of a Art piece",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": "204"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/artists": {
             "get": {
                 "tags": [
@@ -125,6 +195,127 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Create a new artist",
+                "description": "Stores the Art in the DB",
+                "operationId": "83d2888bdc6fac66b9a7cc81c4c950fb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "artists"
+                                ],
+                                "properties": {
+                                    "artist": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Me"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/artists/{id}": {
+            "get": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "Gets an Artist by ID",
+                "operationId": "d0b68c06b8bc310fbe24c6d3ea80dac3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Artist id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Delete an Artist",
+                "description": "Delete Artist",
+                "operationId": "4f6d8bd2c8b4b738af7589b72348ac20",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of a Artist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": "204"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
