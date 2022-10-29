@@ -14,6 +14,9 @@ class ArtSeeder extends Seeder
      *
      * @return void
      */
+
+    //this method calls in the factory to fill in the database by the amount in the count then creates the seeds.
+
     public function run()
     {
     Art::factory()->count(10)->create();

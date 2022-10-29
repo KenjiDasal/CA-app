@@ -14,10 +14,13 @@ class ArtFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    //this method fills the database with fake art into the database.
+
     public function definition()
     {
         return [
-            
+
             'title' => fake()->name(),
             'artist' => fake()->name(),
             'category' => fake()->name(),

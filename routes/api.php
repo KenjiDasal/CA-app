@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//creates a routing for the api of the Art and Artist controller which allows the swagger to access the database.
 Route::apiResource('/art', ArtController::class);
 
 Route::apiResource('/artists', ArtistController::class);

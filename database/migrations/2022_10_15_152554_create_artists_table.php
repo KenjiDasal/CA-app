@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+
+    //This method creates a table for an Artist
+
     public function up()
     {
         Schema::create('artists', function (Blueprint $table) {
@@ -25,6 +28,9 @@ return new class extends Migration
      *
      * @return void
      */
+
+    //this method deletes the table and recreates it.
+
     public function down()
     {
         Schema::dropIfExists('artists');
