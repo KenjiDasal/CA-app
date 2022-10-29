@@ -24,7 +24,7 @@ class ArtFactory extends Factory
             'title' => fake()->name(),
             'artist' => fake()->name(),
             'category' => fake()->name(),
-            'description' => fake()->name(),
+            'description' => fake()->text(),
             'likes' => '255',
 
         ];
