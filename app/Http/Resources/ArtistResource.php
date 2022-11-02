@@ -15,8 +15,10 @@ class ArtistResource extends JsonResource
     public function toArray($request)
     {
         return[
-            `id` => $this -> id,
-            `artist` => $this -> artist,
+
+            'id' => $this->id,
+            'artist' => $this->artist,
+            
         ];
     }
 }
