@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         //     PostSeeder::class,
         //     CommentSeeder::class,
         // ]);
+
+        $this -> call(GallerySeeder::class);
     }
 }
