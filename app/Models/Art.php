@@ -14,7 +14,8 @@ class Art extends Model
         'artist',
         'category',
         'description',
-        'likes'
+        'likes',
+        'gallery_id'
 
     ];
 

@@ -22,6 +22,10 @@ class ArtResource extends JsonResource
             'category' => $this->category,
             'description' => $this->description,
             'likes' => $this->likes,
+            'gallery_id' => $this->gallery->id,
+            'gallery_name' => $this->gallery->name,
+            'gallery_address' => $this->gallery->address,
+
 
         ];
     }

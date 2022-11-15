@@ -37,7 +37,7 @@ class ArtController extends Controller
     public function index()
     {
 
-        return new ArtCollection(Art::all());
+        return new ArtCollection(Art::with('gallery')->get());
 
     }
 
@@ -76,15 +76,16 @@ class ArtController extends Controller
     public function store(Request $request)
     {
 
-        $art = Art::create($request->only([
+        $art = Art::create([
 
-            'title',
-            'artist',
-            'category',
-            'description',
-            'likes'
+            'title' => $request->title,
+            'artist' => $request->artist,
+            'category' => $request->category,
+            'description' => $request->description,
+            'likes' => $request->likes,
+            'gallery_id' => $request->gallery_id,
 
-        ]));
+        ]);
 
         return new ArtResource($art);
 
@@ -136,13 +137,16 @@ class ArtController extends Controller
      */
     public function update(Request $request, Art $art)
     {
+
+
         $art -> update($request->only([
 
             'title',
             'artist',
             'category',
             'description',
-            'likes'
+            'likes',
+            'gallery_id'
 
         ]));
 
