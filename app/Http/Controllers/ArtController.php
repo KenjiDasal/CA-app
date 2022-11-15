@@ -37,7 +37,7 @@ class ArtController extends Controller
     public function index()
     {
 
-        return new ArtCollection(Art::with('gallery')->get());
+        return new ArtCollection(Art::with('galleries')->get());
 
     }
 

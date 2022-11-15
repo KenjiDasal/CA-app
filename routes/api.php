@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\GalleryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/art', ArtController::class);
 
 Route::apiResource('/artists', ArtistController::class);
+
+Route::apiResource('/galleries', GalleryController::class);
