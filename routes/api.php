@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArtController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\GalleryController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +24,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
-//creates a routing for the api of the Art and Artist controller which allows the swagger to access the database.
-Route::apiResource('/art', ArtController::class);
+
+Route::middleware('auth:sanctum')->group(function (){
+    Route::post('/auth/logout',[AuthController::class, 'logout']);
+    Route::get('/auth/user',[AuthController::class, 'user']);
+
+
+    Route::apiResource('/art', ArtController::class)->except((['index', 'show']));
+});
+
+
+Route::get('/art', [ArtController::class, 'index']);
+Route::get('/art', [ArtController::class, 'show']);
 
 Route::apiResource('/artists', ArtistController::class);
 

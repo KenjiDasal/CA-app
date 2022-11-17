@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ArtCollection;
-use App\Models\Art;
 use App\Http\Resources\ArtResource;
+
+
+use App\Models\Gallery;
+use App\Models\Art;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -37,7 +41,7 @@ class ArtController extends Controller
     public function index()
     {
 
-        return new ArtCollection(Art::with('galleries')->get());
+        return new ArtCollection(Art::with('gallery')->get());
 
     }
 

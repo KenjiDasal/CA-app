@@ -15,7 +15,7 @@ class ArtCollection extends ResourceCollection
     public function toArray($request)
     {
 
-        
+        // return $this->hasMany('App\Art');
 
         return [
 

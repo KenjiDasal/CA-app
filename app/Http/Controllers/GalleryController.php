@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use app\http\Resources\GalleryResource;
-use app\http\Resources\GalleryCollection;
+use App\Http\Resources\GalleryResource;
+use App\Http\Resources\GalleryCollection;
 
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
@@ -41,8 +41,6 @@ class GalleryController extends Controller
         ]);
 
         return new GalleryResource($gallery);
-
-
     }
 
     /**
@@ -54,7 +52,6 @@ class GalleryController extends Controller
     public function show(Gallery $gallery)
     {
         return new GalleryResource($gallery);
-
     }
 
     /**
@@ -66,7 +63,7 @@ class GalleryController extends Controller
      */
     public function update(UpdateGalleryRequest $request, Gallery $gallery)
     {
-        $gallery -> update($request->all());
+        $gallery->update($request->all());
     }
 
     /**
