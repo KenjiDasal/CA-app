@@ -18,7 +18,8 @@ class ArtistResource extends JsonResource
 
             'id' => $this->id,
             'artist' => $this->artist,
-            
+            'bio' => $this->bio,
+
         ];
     }
 }

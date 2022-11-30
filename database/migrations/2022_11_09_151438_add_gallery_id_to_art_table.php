@@ -30,7 +30,7 @@ return new class extends Migration
     {
         Schema::table('art', function (Blueprint $table) {
             //
-            $table->dropForeignKey(['gallery_id']);
+            $table->dropForeign(['gallery_id']);
             $table->dropColumn('gallery_id');
 
         });

@@ -28,17 +28,18 @@ Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
 
-Route::middleware('auth:sanctum')->group(function (){
-    Route::post('/auth/logout',[AuthController::class, 'logout']);
-    Route::get('/auth/user',[AuthController::class, 'user']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('/auth/user', [AuthController::class, 'user']);
 
 
+    // Route::apiResource('/art', ArtController::class)->except((['index', 'show']));
     Route::apiResource('/art', ArtController::class)->except((['index', 'show']));
 });
 
 
 Route::get('/art', [ArtController::class, 'index']);
-Route::get('/art', [ArtController::class, 'show']);
+Route::get('/art/{art}', [ArtController::class, 'show']);
 
 Route::apiResource('/artists', ArtistController::class);
 

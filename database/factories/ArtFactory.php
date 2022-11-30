@@ -22,7 +22,6 @@ class ArtFactory extends Factory
         return [
 
             'title' => fake()->word(),
-            'artist' => fake()->name(),
             'category' => fake()->word(),
             'description' => fake()->text(200),
             'likes' => fake()->numberBetween(0, 1000000),

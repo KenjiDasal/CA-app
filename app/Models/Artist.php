@@ -9,11 +9,16 @@ class Artist extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    // protected $fillable = [
 
-        'artist'
+    //     'artist'
 
-    ];
+    // ];
 
-    protected $guarded = [];
+    // protected $guarded = [];
+
+    public function art()
+    {
+        return $this->belongstoMany(Art::class)->withTimestamps();
+    }
 }

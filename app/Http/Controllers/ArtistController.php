@@ -61,6 +61,8 @@ class ArtistController extends Controller
      *         @OA\JsonContent(
      *            required={"artists"},
      *            @OA\Property(property="artist", type="string", format="string", example="Me"),
+     *            @OA\Property(property="bio", type="string", format="string", example="bio testing"),
+     *
      *            )
      *      ),
      *     @OA\Response(
@@ -83,7 +85,8 @@ class ArtistController extends Controller
     {
         $artist = Artist::create($request->only([
 
-            'artist'
+            'artist',
+            'bio'
 
         ]));
 
@@ -143,7 +146,8 @@ class ArtistController extends Controller
     {
         $artist -> update($request->only([
 
-            'artist'
+            'artist',
+            'bio'
 
         ]));
 
